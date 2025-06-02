@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useStore } from '../../store/store';
 import { supabase, formatPrice, generateOrderId } from '../../lib/supabase';
@@ -9,7 +9,9 @@ import {
   MessageSquare, 
   Loader,
   Copy,
-  CheckCircle 
+  CheckCircle,
+  ShoppingBag,
+  ArrowLeft
 } from 'lucide-react';
 import toast from 'react-hot-toast';
 
@@ -58,17 +60,23 @@ const CheckoutPage = () => {
     }
   };
 
+  useEffect(() => {
+    if (paymentMethod === 'bank_transfer') {
+      fetchBankInfo();
+    }
+  }, [paymentMethod]);
+
   const handleCopyText = (text: string) => {
     navigator.clipboard.writeText(text);
     toast.success('Copied to clipboard');
   };
 
-  const handleWhatsAppCheckout = () => {
+  const handleWhatsAppCheckout = (orderId: string) => {
     const items = cart.map(
       item => `${item.quantity}x ${item.product.name} @ ${formatPrice(item.product.price)}`
     ).join('\n');
 
-    const message = `New Order:\n\n${items}\n\nTotal: ${formatPrice(total)}\n\nCustomer Details:\nName: ${userDetails.name}\nPhone: ${userDetails.phone}\nAddress: ${userDetails.address}`;
+    const message = `New Order #${orderId}:\n\n${items}\n\nTotal: ${formatPrice(total)}\n\nCustomer Details:\nName: ${userDetails.name}\nPhone: ${userDetails.phone}\nAddress: ${userDetails.address}`;
 
     const whatsappUrl = `https://wa.me/2348172452411?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
@@ -112,7 +120,7 @@ const CheckoutPage = () => {
       if (error) throw error;
 
       if (paymentMethod === 'whatsapp') {
-        handleWhatsAppCheckout();
+        handleWhatsAppCheckout(orderId);
       }
 
       clearCart();
@@ -124,24 +132,18 @@ const CheckoutPage = () => {
     }
   };
 
-  // Fetch bank info when payment method is bank transfer
-  useState(() => {
-    if (paymentMethod === 'bank_transfer') {
-      fetchBankInfo();
-    }
-  });
-
   if (cart.length === 0) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <p className="text-gray-600 mb-4">Your cart is empty</p>
-          <button
-            onClick={() => navigate('/products')}
-            className="btn btn-primary"
+          <Link
+            to="/products"
+            className="btn btn-primary flex items-center justify-center"
           >
+            <ShoppingBag className="h-5 w-5 mr-2" />
             Continue Shopping
-          </button>
+          </Link>
         </div>
       </div>
     );
@@ -156,7 +158,16 @@ const CheckoutPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h1 className="text-3xl font-bold mb-8">Checkout</h1>
+            <div className="flex justify-between items-center mb-8">
+              <h1 className="text-3xl font-bold">Checkout</h1>
+              <Link
+                to="/products"
+                className="text-gray-600 hover:text-gray-900 flex items-center"
+              >
+                <ArrowLeft className="h-5 w-5 mr-2" />
+                Back to Shopping
+              </Link>
+            </div>
 
             <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
               <h2 className="text-xl font-semibold mb-4">Order Summary</h2>
@@ -266,6 +277,11 @@ const CheckoutPage = () => {
                         WhatsApp Order
                       </span>
                     </label>
+                    {paymentMethod === 'whatsapp' && (
+                      <p className="mt-2 text-sm text-gray-600 ml-7">
+                        Complete your order via WhatsApp for easy communication and payment instructions
+                      </p>
+                    )}
                   </div>
 
                   <div>
@@ -328,6 +344,9 @@ const CheckoutPage = () => {
                           </div>
                         </div>
                       </div>
+                      <p className="mt-4 text-sm text-gray-600">
+                        Please transfer the exact amount and send your payment proof via WhatsApp
+                      </p>
                     </div>
                   )}
                 </div>
@@ -340,10 +359,20 @@ const CheckoutPage = () => {
               >
                 {isLoading ? (
                   <Loader className="h-5 w-5 animate-spin mx-auto" />
+                ) : paymentMethod === 'whatsapp' ? (
+                  'Continue to WhatsApp'
                 ) : (
-                  'Place Order'
+                  'Complete Order'
                 )}
               </button>
+
+              <Link
+                to="/products"
+                className="btn btn-outline w-full flex items-center justify-center"
+              >
+                <ShoppingBag className="h-5 w-5 mr-2" />
+                Continue Shopping
+              </Link>
             </form>
           </motion.div>
         </div>

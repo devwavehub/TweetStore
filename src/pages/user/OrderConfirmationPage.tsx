@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { supabase, Order } from '../../lib/supabase';
-import { CheckCircle, Package, Loader } from 'lucide-react';
+import { CheckCircle, Package, Loader, ShoppingBag, MessageSquare } from 'lucide-react';
 import toast from 'react-hot-toast';
 
 const OrderConfirmationPage = () => {
@@ -31,6 +31,10 @@ const OrderConfirmationPage = () => {
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const handleWhatsAppChat = () => {
+    window.open('https://wa.me/2348172452411', '_blank');
   };
 
   if (isLoading) {
@@ -72,14 +76,18 @@ const OrderConfirmationPage = () => {
             </div>
 
             <h1 className="text-2xl font-bold text-gray-900 mb-2">
-              Order Received!
+              {order.payment_method === 'whatsapp' 
+                ? 'Order Sent Successfully!'
+                : 'Order Received!'}
             </h1>
             
             <p className="text-gray-600 mb-6">
-              Thank you for your order. We'll process it shortly.
+              {order.payment_method === 'whatsapp'
+                ? 'Your WhatsApp order has been sent. Please check WhatsApp for further instructions.'
+                : 'Thank you for your order. Please complete the bank transfer and send the proof via WhatsApp.'}
             </p>
 
-            <div className="bg-gray-50  rounded-lg p-4 mb-6">
+            <div className="bg-gray-50 rounded-lg p-4 mb-6">
               <p className="text-sm text-gray-500 mb-2">Order ID</p>
               <p className="text-lg font-medium">{order.order_id}</p>
             </div>
@@ -93,23 +101,28 @@ const OrderConfirmationPage = () => {
                 Track Order
               </Link>
 
+              {order.payment_method === 'bank_transfer' && (
+                <button
+                  onClick={handleWhatsAppChat}
+                  className="btn btn-success w-full flex items-center justify-center"
+                >
+                  <MessageSquare className="h-5 w-5 mr-2" />
+                  Send Payment Proof
+                </button>
+              )}
+
               <Link 
                 to="/products"
-                className="btn btn-outline w-full"
+                className="btn btn-outline w-full flex items-center justify-center"
               >
+                <ShoppingBag className="h-5 w-5 mr-2" />
                 Continue Shopping
               </Link>
             </div>
 
-            {order.payment_method === 'whatsapp' && (
-              <p className="text-sm text-gray-500">
-                Please check WhatsApp for order confirmation and payment instructions.
-              </p>
-            )}
-
             {order.payment_method === 'bank_transfer' && (
               <p className="text-sm text-gray-500">
-                Please complete your bank transfer and send the payment proof via WhatsApp.
+                Please complete your bank transfer and send the payment proof via WhatsApp to confirm your order.
               </p>
             )}
           </div>

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { supabase, Product, formatPrice } from '../../lib/supabase';
 import { useStore } from '../../store/store';
@@ -13,6 +13,7 @@ const ProductsPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const addToCart = useStore((state) => state.addToCart);
   const openCart = useStore((state) => state.openCart);
+  const navigate = useNavigate();
 
   const currentCategory = searchParams.get('category') || 'all';
 
@@ -50,10 +51,15 @@ const ProductsPage = () => {
     product.description.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const handleAddToCart = (product: Product) => {
+  const handleAddToCart = (e: React.MouseEvent, product: Product) => {
+    e.stopPropagation(); // Prevent navigation when clicking the cart button
     addToCart(product, 1);
     toast.success('Added to cart');
     openCart();
+  };
+
+  const handleProductClick = (productId: string) => {
+    navigate(`/products/${productId}`);
   };
 
   return (
@@ -119,7 +125,8 @@ const ProductsPage = () => {
                   key={product.id}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  className="bg-white rounded-lg shadow-sm overflow-hidden group"
+                  className="bg-white rounded-lg shadow-sm overflow-hidden group cursor-pointer"
+                  onClick={() => handleProductClick(product.id)}
                 >
                   <div className="aspect-w-4 aspect-h-3 bg-gray-200 relative overflow-hidden">
                     <img
@@ -128,7 +135,7 @@ const ProductsPage = () => {
                       className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-300"
                     />
                     <button
-                      onClick={() => handleAddToCart(product)}
+                      onClick={(e) => handleAddToCart(e, product)}
                       className="absolute bottom-4 right-4 bg-white rounded-full p-2 shadow-md hover:bg-primary-50 transition-colors"
                     >
                       <ShoppingCart className="h-5 w-5 text-primary-600" />

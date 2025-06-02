@@ -11,7 +11,8 @@ import {
   LogOut, 
   Menu, 
   X,
-  Settings
+  Settings,
+  Home
 } from 'lucide-react';
 
 const AdminLayout = () => {
@@ -26,6 +27,7 @@ const AdminLayout = () => {
   };
 
   const navigation = [
+    { name: 'Back to Home', href: '/', icon: Home },
     { name: 'Dashboard', href: '/admin', icon: LayoutDashboard },
     { name: 'Products', href: '/admin/products', icon: ShoppingBag },
     { name: 'Orders', href: '/admin/orders', icon: Package },

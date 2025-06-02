@@ -9,7 +9,8 @@ import {
   Settings,
   LogOut, 
   Menu, 
-  X, 
+  X,
+  Home
 } from 'lucide-react';
 
 const DashboardLayout = () => {
@@ -24,6 +25,7 @@ const DashboardLayout = () => {
   };
 
   const navigation = [
+    { name: 'Back to Home', href: '/', icon: Home },
     { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
     { name: 'Profile', href: '/dashboard/profile', icon: User },
     { name: 'Orders', href: '/dashboard/orders', icon: ShoppingBag },
