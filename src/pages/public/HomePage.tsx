@@ -40,7 +40,7 @@ const HomePage = () => {
               </Link>
               <Link 
                 to="/booking" 
-                className="btn btn-outline border-white text-white hover:bg-white hover:text-gray-900 text-lg px-8 py-3 flex items-center justify-center"
+                className="btn btn-outline border-white text-gray hover:bg-white hover:text-gray-10000 text-lg px-8 py-3 flex items-center justify-center"
               >
                 <Settings className="mr-2 h-5 w-5" />
                 Book Repairs/Setup
@@ -395,7 +395,7 @@ const HomePage = () => {
             </Link>
             <Link 
               to="/booking" 
-              className="btn btn-outline border-white text-white hover:bg-white hover:text-gray-900 text-lg px-8 py-3 flex items-center justify-center"
+              className="btn btn-outline border-white text-black hover:bg-white hover:text-gray-900 text-lg px-8 py-3 flex items-center justify-center"
             >
               <Settings className="mr-2 h-5 w-5" />
               Book a Service
