@@ -44,7 +44,7 @@ const Navbar = () => {
           <Link to="/" className="flex items-center space-x-2">
             <Smartphone className="h-8 w-8 text-primary-600" />
             <span className="text-xl font-bold bg-gradient-to-r from-primary-600 via-secondary-500 to-accent-500 text-transparent bg-clip-text">
-              Dammy Tweak & Store
+             NextGadgets NG
             </span>
           </Link>
 
