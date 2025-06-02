@@ -19,7 +19,7 @@ const Footer = () => {
             <div className="flex items-center space-x-2 mb-4">
               <Smartphone className="h-8 w-8 text-primary-400" />
               <span className="text-xl font-bold text-white">
-                Dammy Tweak & Store
+                NextGadgets NG
               </span>
             </div>
             <p className="text-gray-400 mb-4">
