@@ -314,7 +314,7 @@ const HomePage = () => {
       <section className="py-16 bg-gray-50">
         <div className="container-custom">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Why Choose Dammy Tweak & Store</h2>
+            <h2 className="text-3xl font-bold mb-4">Why Choose NextGadgets NG</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               We stand out with our commitment to quality, expertise, and customer satisfaction.
             </p>
