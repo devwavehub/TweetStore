@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { CheckCircle, MessageSquare } from 'lucide-react';
+import { CheckCircle, MessageSquare, Home, ArrowLeft } from 'lucide-react';
 
 const BookingSuccessPage = () => {
   const handleWhatsAppChat = () => {
@@ -14,8 +14,25 @@ const BookingSuccessPage = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="max-w-2xl mx-auto text-center"
+          className="max-w-2xl mx-auto"
         >
+          <div className="flex justify-between items-center mb-8">
+            <Link 
+              to="/booking"
+              className="text-gray-600 hover:text-gray-900 flex items-center"
+            >
+              <ArrowLeft className="h-5 w-5 mr-2" />
+              Back to Booking
+            </Link>
+            <Link 
+              to="/"
+              className="text-gray-600 hover:text-gray-900 flex items-center"
+            >
+              <Home className="h-5 w-5 mr-2" />
+              Home
+            </Link>
+          </div>
+
           <div className="bg-white rounded-lg shadow-sm p-8">
             <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100 mb-4">
               <CheckCircle className="h-6 w-6 text-green-600" />
@@ -40,7 +57,7 @@ const BookingSuccessPage = () => {
 
               <Link 
                 to="/booking"
-                className="btn btn-outline w-full"
+                className="btn btn-outline w-full flex items-center justify-center"
               >
                 Make Another Booking
               </Link>

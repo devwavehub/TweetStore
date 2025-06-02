@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { supabase } from '../../lib/supabase';
 import { useAuth } from '../../lib/auth';
@@ -7,7 +7,9 @@ import {
   Smartphone, 
   Laptop, 
   MessageSquare, 
-  Loader 
+  Loader,
+  ArrowLeft,
+  Home
 } from 'lucide-react';
 import toast from 'react-hot-toast';
 
@@ -76,11 +78,24 @@ const BookingPage = () => {
           transition={{ duration: 0.5 }}
           className="max-w-2xl mx-auto"
         >
-          <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold mb-4">Book a Repair Service</h1>
-            <p className="text-gray-600">
-              Fill in the details below and we'll get back to you shortly
-            </p>
+          <div className="flex justify-between items-center mb-8">
+            <div className="flex items-center space-x-4">
+              <Link 
+                to="/"
+                className="text-gray-600 hover:text-gray-900 flex items-center"
+              >
+                <ArrowLeft className="h-5 w-5 mr-2" />
+                Back
+              </Link>
+              <h1 className="text-3xl font-bold">Book a Repair Service</h1>
+            </div>
+            <Link 
+              to="/"
+              className="text-gray-600 hover:text-gray-900 flex items-center"
+            >
+              <Home className="h-5 w-5 mr-2" />
+              Home
+            </Link>
           </div>
 
           <div className="bg-white rounded-lg shadow-sm p-8">
@@ -195,10 +210,7 @@ const BookingPage = () => {
                 </button>
               </div>
             </form>
-
-        
           </div>
-          
 
           <div className="mt-8 bg-primary-50 rounded-lg p-6">
             <h2 className="text-lg font-semibold mb-4">What happens next?</h2>
@@ -219,7 +231,7 @@ const BookingPage = () => {
                 <span className="flex-shrink-0 h-6 w-6 rounded-full bg-primary-100 text-primary-600 flex items-center justify-center mr-3">
                   3
                 </span>
-                <span>Get a repair quote and schedule your  service</span>
+                <span>Get a repair quote and schedule your service</span>
               </li>
             </ul>
           </div>
