@@ -23,7 +23,7 @@ const Footer = () => {
               </span>
             </div>
             <p className="text-gray-400 mb-4">
-              Your one-stop shop for phones, laptops, accessories, and professional repair services in Nigeria.
+              Proudly serving Nigeria with quality gadgets, accessories, and trusted repair services.
             </p>
             <div className="flex space-x-4">
               <a 
