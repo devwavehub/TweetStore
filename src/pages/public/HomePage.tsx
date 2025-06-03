@@ -25,7 +25,7 @@ const HomePage = () => {
             transition={{ duration: 0.5 }}
           >
             <h3 className="text-4xl md:text-5xl font-bold mb-4">
-              Shop Smarter🛒 Repair Faster⚙️ Live Better✨.
+              Shop Smarter. Repair Faster. Live Better.
             </h3>
             <p className="text-lg md:text-xl mb-8 text-gray-200">
               Quality phones, laptops, accessories, and trusted repair services — all at your fingertips.
