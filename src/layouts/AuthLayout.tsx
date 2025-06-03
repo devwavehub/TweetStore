@@ -31,7 +31,7 @@ const AuthLayout = () => {
           <Smartphone className="h-12 w-12 text-primary-600" />
         </Link>
         <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-          Dammy Tweak & Store
+          NextGadgets NG
         </h2>
       </div>
 
