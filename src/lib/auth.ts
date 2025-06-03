@@ -67,7 +67,7 @@ export const useAuth = () => {
       });
 
       if (error) throw error;
-      toast.success('Account created successfully! Please check your email to verify your account.');
+      toast.success('Account created successfully! 😉🤞Login and enjoy.');
       return { success: true };
     } catch (error: any) {
       toast.error(error.message || 'Failed to create account');
@@ -86,7 +86,7 @@ export const useAuth = () => {
       });
 
       if (error) throw error;
-      toast.success('Password reset link sent to your email');
+      toast.success('Password reset link sent to your email, Don,t forget it again 😒');
       return { success: true };
     } catch (error: any) {
       toast.error(error.message || 'Failed to send reset password email');
@@ -105,7 +105,7 @@ export const useAuth = () => {
       });
 
       if (error) throw error;
-      toast.success('Profile updated successfully');
+      toast.success('Profile updated successfully😁');
       return { success: true };
     } catch (error: any) {
       toast.error(error.message || 'Failed to update profile');
