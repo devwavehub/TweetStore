@@ -25,7 +25,7 @@ const HomePage = () => {
             transition={{ duration: 0.5 }}
           >
             <h3 className="text-4xl md:text-5xl font-bold mb-4">
-              Shop Smarter🛒.
+              Shop Smarter🛒
             </h3>
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               Repair Faster⚙️
