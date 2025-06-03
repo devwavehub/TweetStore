@@ -21,7 +21,7 @@ const TermsPage = () => {
                 <h2 className="text-xl font-semibold">Introduction</h2>
               </div>
               <p className="text-gray-600">
-                Welcome to Dammy Tweak & Store. By accessing our website and using our services,
+                Welcome to NextGadgets NG. By accessing our website and using our services,
                 you agree to these terms and conditions. Please read them carefully before making
                 any purchase or booking.
               </p>
