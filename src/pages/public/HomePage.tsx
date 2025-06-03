@@ -25,7 +25,7 @@ const HomePage = () => {
             transition={{ duration: 0.5 }}
           >
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Upgrade your tech life – shop, fix, and connect with ease.
+              Shop, Fix, and connect with ease.
             </h1>
             <p className="text-lg md:text-xl mb-8 text-gray-200">
               Premium phones, laptops, accessories, and expert repair services - all in one place.
