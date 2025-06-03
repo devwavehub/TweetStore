@@ -28,7 +28,7 @@ const HomePage = () => {
               Shop Smarter🛒 Repair Faster⚙️ Live Better✨.
             </h2>
             <p className="text-lg md:text-xl mb-8 text-gray-200">
-              Premium phones, laptops, accessories, and expert repair services - all in one place.
+              Quality phones, laptops, accessories, and trusted repair services — all at your fingertips.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link 
