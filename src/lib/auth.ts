@@ -142,7 +142,7 @@ export const useAuth = () => {
   // Admin sign out
   const adminSignOut = () => {
     localStorage.removeItem('adminAuthenticated');
-    toast.success('Admin signed out successfully');
+    toast.success('Admin signed out successfully🤷‍♀️');
   };
 
   return {
