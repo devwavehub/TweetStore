@@ -24,15 +24,9 @@ const HomePage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h3 className="text-4xl md:text-5xl font-bold mb-4">
-              Shop Smarter🛒
-            </h3>
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Repair Faster⚙️
+              Shop Smarter🛒 Repair Faster⚙️ Live Better
             </h2>
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Live Better✨
-            </h1>
             <p className="text-lg md:text-xl mb-8 text-gray-200">
               Premium phones, laptops, accessories, and expert repair services - all in one place.
             </p>
