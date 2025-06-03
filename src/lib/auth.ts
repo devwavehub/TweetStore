@@ -41,7 +41,7 @@ export const useAuth = () => {
       if (password === 'Dammy@$$2002$$') {
         // Store admin status in localStorage
         localStorage.setItem('adminAuthenticated', 'true');
-        toast.success('Admin signed in successfully!');
+        toast.success('Admin signed in successfully!🤤');
         return { success: true };
       } else {
         throw new Error('Incorrect admin password');
