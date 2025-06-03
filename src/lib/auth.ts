@@ -23,7 +23,7 @@ export const useAuth = () => {
       });
 
       if (error) throw error;
-      toast.success('Signed in successfully!');
+      toast.success('Signed in successfully!🤞');
       return { success: true };
     } catch (error: any) {
       toast.error(error.message || 'Failed to sign in');
