@@ -163,7 +163,7 @@ const Footer = () => {
               to="/admin-login" 
               className="text-gray-800 hover:text-gray-700 transition-colors"
             >
-              ...
+              *****
             </Link>
           </div>
         </div>
